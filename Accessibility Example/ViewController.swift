@@ -12,11 +12,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.backgroundColor = UIColor(red: 152, green: 251, blue: 152, alpha: 1)
+        view.backgroundColor = UIColor(red: 173/255, green: 217/255, blue: 185/255, alpha: 1.0)
         
         let pandaLabel = UILabel()
         pandaLabel.text = "Panda Bear"
-        pandaLabel.textColor = .darkGray
+        pandaLabel.textColor = .black
         pandaLabel.font = .boldSystemFont(ofSize: 32)
         pandaLabel.frame = .init(x: 40, y: 40, width: 100, height: 100)
         pandaLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -24,13 +24,18 @@ class ViewController: UIViewController {
         
         let pandaImageView = UIImageView()
         pandaImageView.image = UIImage(named: "panda")
+        pandaImageView.layer.cornerRadius = 20
+        pandaImageView.layer.borderWidth = 1
+        pandaImageView.layer.masksToBounds = false
+        pandaImageView.layer.cornerRadius = 20
+        pandaImageView.clipsToBounds = true
         pandaImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pandaImageView)
         
         let nextButton = UIButton()
         nextButton.setTitle("Next", for: .normal)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.backgroundColor = .systemIndigo
+        nextButton.backgroundColor = .black
         nextButton.layer.cornerRadius = 28
         view.addSubview(nextButton)
         
@@ -44,8 +49,8 @@ class ViewController: UIViewController {
             nextButton.widthAnchor.constraint(equalToConstant: 100),
             nextButton.heightAnchor.constraint(equalToConstant: 60),
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 60),
-            ])
+            nextButton.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
+        ])
         
         
         
