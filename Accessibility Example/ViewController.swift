@@ -37,6 +37,7 @@ class ViewController: UIViewController {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.backgroundColor = .black
         nextButton.layer.cornerRadius = 28
+        nextButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         view.addSubview(nextButton)
         
         NSLayoutConstraint.activate([
@@ -50,12 +51,49 @@ class ViewController: UIViewController {
             nextButton.heightAnchor.constraint(equalToConstant: 60),
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
-        ])
+            ])
+    }
+    
+    @objc private func didTapButton() {
+        let secondVC = SecondViewController()
+        secondVC.title = "Welcome"
+        navigationController?.pushViewController(secondVC, animated: true)
+    }
+}
+
+class SecondViewController: UIViewController {
+    
+    let nextButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemRed
+        title = "Panda"
         
         
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.backgroundColor = .black
+        nextButton.layer.cornerRadius = 28
+        nextButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        view.addSubview(nextButton)
+        
+        NSLayoutConstraint.activate([
+            nextButton.widthAnchor.constraint(equalToConstant: 100),
+            nextButton.heightAnchor.constraint(equalToConstant: 60),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
+            ])
         
     }
-
-
+    
+    @objc private func didTapButton() {
+        let vc = UIViewController()
+        vc.title = "Welcome"
+        vc.view.backgroundColor = .white
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
