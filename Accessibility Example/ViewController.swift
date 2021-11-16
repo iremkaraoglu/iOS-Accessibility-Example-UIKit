@@ -56,7 +56,6 @@ class ViewController: UIViewController {
     
     @objc private func didTapButton() {
         let secondVC = QuestionViewController()
-//        secondVC.title = "Welcome"
         navigationController?.pushViewController(secondVC, animated: true)
     }
 }

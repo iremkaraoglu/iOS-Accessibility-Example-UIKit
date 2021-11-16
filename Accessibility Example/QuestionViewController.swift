@@ -69,6 +69,11 @@ class QuestionViewController: UIViewController {
             loveSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loveSlider.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
         ])
+        
+        let animationImages = [UIImage(named: "panda.png")!, UIImage(named: "panda2.png")!, UIImage(named: "panda3.png")!, UIImage(named: "panda4.png")!]
+        pandaImageView.animationImages = animationImages
+        pandaImageView.animationDuration = 1.5
+        pandaImageView.startAnimating()
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!)
