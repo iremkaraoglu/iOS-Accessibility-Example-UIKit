@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class QuestionViewController: UIViewController {
-    let step:Float = 1 // If you want UISlider to snap to steps by 10
+    let step:Float = 5 // If you want UISlider to snap to steps by 10
     let pandaLabel = UILabel()
     let loveCount = UILabel()
     let pandaImageView = UIImageView()
@@ -24,7 +24,6 @@ class QuestionViewController: UIViewController {
         pandaLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pandaLabel)
         
-        pandaImageView.image = UIImage(named: "panda2")
         pandaImageView.layer.cornerRadius = 20
         pandaImageView.layer.borderWidth = 1
         pandaImageView.layer.masksToBounds = false
@@ -70,10 +69,16 @@ class QuestionViewController: UIViewController {
             loveSlider.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
         ])
         
-        let animationImages = [UIImage(named: "panda.png")!, UIImage(named: "panda2.png")!, UIImage(named: "panda3.png")!, UIImage(named: "panda4.png")!]
-        pandaImageView.animationImages = animationImages
-        pandaImageView.animationDuration = 1.5
-        pandaImageView.startAnimating()
+        if (UIAccessibility.isReduceMotionEnabled) {
+            pandaImageView.image = UIImage(named: "panda2")
+        } else {
+            let animationImages = [UIImage(named: "panda.png")!, UIImage(named: "panda2.png")!, UIImage(named: "panda3.png")!, UIImage(named: "panda4.png")!]
+            pandaImageView.animationImages = animationImages
+            pandaImageView.animationDuration = 1.5
+            pandaImageView.startAnimating()
+        }
+        
+        
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!)
