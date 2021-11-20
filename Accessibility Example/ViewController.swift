@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,13 +16,18 @@ class ViewController: UIViewController {
         
         let pandaLabel = UILabel()
         pandaLabel.text = "Welcome"
+        pandaLabel.textAlignment = .center
         pandaLabel.textColor = .black
-        pandaLabel.font = .boldSystemFont(ofSize: 32)
-        pandaLabel.frame = .init(x: 40, y: 40, width: 100, height: 100)
+        pandaLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        pandaLabel.adjustsFontForContentSizeCategory = true
+        pandaLabel.numberOfLines = 9
         pandaLabel.translatesAutoresizingMaskIntoConstraints = false
+        pandaLabel.accessibilityLabel = "Example Accessibility Label"
         view.addSubview(pandaLabel)
         
         let pandaImageView = UIImageView()
+        pandaImageView.isAccessibilityElement = true
+        pandaImageView.accessibilityLabel = "Panda"
         pandaImageView.image = UIImage(named: "panda")
         pandaImageView.layer.cornerRadius = 20
         pandaImageView.layer.borderWidth = 1
@@ -34,6 +39,7 @@ class ViewController: UIViewController {
         
         let nextButton = UIButton()
         nextButton.setTitle("Next", for: .normal)
+        nextButton.accessibilityHint = "Navigates to the next screen"
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.backgroundColor = .black
         nextButton.layer.cornerRadius = 28
@@ -41,7 +47,8 @@ class ViewController: UIViewController {
         view.addSubview(nextButton)
         
         NSLayoutConstraint.activate([
-            pandaLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pandaLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            pandaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             pandaLabel.centerYAnchor.constraint(equalTo: pandaImageView.topAnchor, constant: -80),
             pandaImageView.widthAnchor.constraint(equalToConstant: 300),
             pandaImageView.heightAnchor.constraint(equalToConstant: 400),
@@ -51,7 +58,7 @@ class ViewController: UIViewController {
             nextButton.heightAnchor.constraint(equalToConstant: 60),
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
-            ])
+        ])
     }
     
     @objc private func didTapButton() {

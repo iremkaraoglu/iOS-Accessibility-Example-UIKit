@@ -20,7 +20,10 @@ class QuestionViewController: UIViewController {
         
         pandaLabel.text = "How much do you love pandas?"
         pandaLabel.textColor = .black
-        pandaLabel.font = .boldSystemFont(ofSize: 24)
+        pandaLabel.textAlignment = .center
+        pandaLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        pandaLabel.adjustsFontForContentSizeCategory = true
+        pandaLabel.numberOfLines = 9
         pandaLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pandaLabel)
         
@@ -50,12 +53,14 @@ class QuestionViewController: UIViewController {
         
         loveCount.textColor = .black
         loveCount.text = String(Int(loveSlider.value))
-        loveCount.font = .boldSystemFont(ofSize: 28)
+        pandaLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        pandaLabel.adjustsFontForContentSizeCategory = true
         loveCount.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loveCount)
         
         NSLayoutConstraint.activate([
-            pandaLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pandaLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            pandaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             pandaLabel.centerYAnchor.constraint(equalTo: pandaImageView.topAnchor, constant: -80),
             pandaImageView.widthAnchor.constraint(equalToConstant: 300),
             pandaImageView.heightAnchor.constraint(equalToConstant: 400),
@@ -66,7 +71,7 @@ class QuestionViewController: UIViewController {
             loveSlider.widthAnchor.constraint(equalToConstant: 300),
             loveSlider.heightAnchor.constraint(equalToConstant: 80),
             loveSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loveSlider.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor, constant: 90),
+            loveSlider.centerYAnchor.constraint(equalTo: pandaImageView.bottomAnchor,constant: 90),
         ])
         
         if (UIAccessibility.isReduceMotionEnabled) {
