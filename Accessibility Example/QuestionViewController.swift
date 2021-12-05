@@ -90,7 +90,6 @@ class QuestionViewController: UIViewController {
     {
         let roundedStepValue = round(sender.value / step) * step
         sender.value = roundedStepValue
-        print("Slider step value \(Int(roundedStepValue))")
         loveCount.text = String(Int(roundedStepValue))
     }
 }
